@@ -1,8 +1,7 @@
 {
   "name": "webpack-p-template",
   "version": "0.0.1",
-  "description": "started webpack template",
-  "main": "index.js",
+  "description": "started webpack-react-ts template written in ts",
   "license": "EULA",
   "private": false,
   "scripts": {
