@@ -1,6 +1,6 @@
-import path from "path";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from "path";
 
 const config: webpack.Configuration = {
     context: path.resolve(__dirname, "src"),
@@ -37,7 +37,7 @@ const config: webpack.Configuration = {
                     {
                         loader: "style-loader",
                         options: {
-                            injectType: 'styleTag'
+                            injectType: 'styleTag',
                         }
                     },
                     {
