@@ -1,5 +1,5 @@
 import webpack from "webpack";
-import merge, { CustomizeRule } from "webpack-merge";
+import merge from "webpack-merge";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 import conf from "./webpack.base.config";
@@ -8,12 +8,12 @@ const prodWebpackConfig: webpack.Configuration = merge(conf, {
     mode: "production",
 
     module: {
-        rules: [
-            {
-                test: /\.css$/i,
-                    use: [MiniCssExtractPlugin.loader],
-            },
-        ]
+        // rules: [
+        //     {
+        //         test: /\.css$/i,
+        //             use: [MiniCssExtractPlugin.loader],
+        //     },
+        // ]
     },
     plugins: [
         new MiniCssExtractPlugin()
