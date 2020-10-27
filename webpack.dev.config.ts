@@ -20,9 +20,8 @@ const devWebpackConfig: webpack.Configuration = merge(conf, {
             const port = server.listeningApp.address().port;
             console.log(`Local http://localhost:${port}`);
             console.log(`On Your Network http://${address.ip()}:${port}`)
-        }
-    }
+        },
+    },
 } as webpack.Configuration);
-
 
 export default devWebpackConfig

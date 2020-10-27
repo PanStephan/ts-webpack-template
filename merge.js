@@ -1,6 +1,15 @@
 // TODO: ts-refactor
 // TODO: store init
 
+// const storeP = () => {
+//     let value = {};
+//     return (v) => {
+//         return value = { ...value, ...v }
+//     }
+// }
+//
+// const store = storeP();
+
 export const merge = (conf, subConf) => {
     let target = {};
     const args = [conf, subConf];
@@ -10,8 +19,9 @@ export const merge = (conf, subConf) => {
             if (obj.hasOwnProperty(prop)) {
                 if (Object.prototype.toString.call(obj[prop]) === '[object Object]' && target[prop]) {
                     // TODO deep - array acc
+                    // TODO obj sub name unregexp
                     if (Object.getOwnPropertyNames(obj[prop])[0] === Object.getOwnPropertyNames(target[prop])[0]) {
-                        target[prop] = [...obj[prop].rules, ...target[prop].rules]
+                        target[prop] = { rules: [...obj[prop].rules, ...target[prop].rules] }
                     } else {
                         target[prop] = merge(target[prop], obj[prop]);
                     }
@@ -26,17 +36,3 @@ export const merge = (conf, subConf) => {
 
     return target;
 };
-
-
-
-
-
-
-// const storeP = () => {
-//     let value = {};
-//     return (v) => {
-//         return value = { ...value, ...v }
-//     }
-// }
-//
-// const store = storeP();
