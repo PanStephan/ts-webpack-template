@@ -21,7 +21,7 @@ export const merge = (conf, subConf) => {
                     // TODO deep - array acc
                     // TODO obj sub name unregexp
                     if (Object.getOwnPropertyNames(obj[prop])[0] === Object.getOwnPropertyNames(target[prop])[0]) {
-                        target[prop] = { rules: [...obj[prop].rules, ...target[prop].rules] }
+                        target[prop] = { rules: [...target[prop].rules, ...obj[prop].rules] }
                     } else {
                         target[prop] = merge(target[prop], obj[prop]);
                     }
