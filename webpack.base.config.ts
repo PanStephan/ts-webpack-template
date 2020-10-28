@@ -2,7 +2,6 @@ import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "path";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const config: webpack.Configuration = {
     context: path.resolve(__dirname, "src"),
@@ -55,10 +54,6 @@ const config: webpack.Configuration = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "/assets/index.html",
-        }),
-        //@ts-ignore
-        new MiniCssExtractPlugin({
-            filename: "[name][contenthash].css"
         }),
     ]
 };

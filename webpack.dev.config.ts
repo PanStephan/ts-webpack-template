@@ -1,13 +1,11 @@
 import webpack from "webpack";
 import address from "address";
-import { merge } from "./merge";
+import { merger } from "./merge";
 
 import conf from "./webpack.base.config";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-//TODO: port set by process.argv
-// argv.indexOf('--watchAll') === -1
-const devWebpackConfig: webpack.Configuration = merge(conf, {
+const devWebpackConfig: webpack.Configuration = merger(conf, {
     mode: "development",
     devtool: "inline-source-map",
     watch: true,
@@ -21,7 +19,8 @@ const devWebpackConfig: webpack.Configuration = merge(conf, {
       ]
     },
     devServer: {
-        port: 4040,
+        //TODO
+        port: process.argv.filter(el => el.slice(0, el.length-4) === "--p=" ? el : null)[0]?.slice(4) ?? 3000,
         host: "0.0.0.0",
         hot: true,
         progress: false,
@@ -29,10 +28,16 @@ const devWebpackConfig: webpack.Configuration = merge(conf, {
         noInfo: true,
         onListening: (server: any) => {
             const port = server.listeningApp.address().port;
+            //TODO
             console.log(`Local http://localhost:${port}`);
             console.log(`On Your Network http://${address.ip()}:${port}`)
         },
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "/assets/index.html",
+        }),
+    ]
 } as webpack.Configuration);
 
 export default devWebpackConfig

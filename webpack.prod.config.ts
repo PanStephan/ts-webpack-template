@@ -1,10 +1,10 @@
 import webpack from "webpack";
-import { merge } from "./merge";
+import { merger } from "./merge";
 
 import conf from "./webpack.base.config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-const prodWebpackConfig: webpack.Configuration = merge(conf, {
+const prodWebpackConfig: webpack.Configuration = merger(conf, {
     mode: "production",
     module: {
         rules: [
@@ -14,11 +14,11 @@ const prodWebpackConfig: webpack.Configuration = merge(conf, {
             },
         ]
     },
-    // plugins: [
-    //     new MiniCssExtractPlugin({
-    //         filename: "[name][contenthash].css"
-    //     })
-    // ]
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name][contenthash].css"
+        })
+    ]
 } as webpack.Configuration);
 
 
