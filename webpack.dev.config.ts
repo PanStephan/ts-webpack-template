@@ -1,9 +1,8 @@
 import webpack from "webpack";
 import address from "address";
-import { merger } from "./merge";
-
 import conf from "./webpack.base.config";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import { merger } from "./merge"
 
 const devWebpackConfig: webpack.Configuration = merger(conf, {
     mode: "development",
@@ -19,8 +18,8 @@ const devWebpackConfig: webpack.Configuration = merger(conf, {
       ]
     },
     devServer: {
-        //TODO
-        port: process.argv.filter(el => el.slice(0, el.length-4) === "--p=" ? el : null)[0]?.slice(4) ?? 3000,
+        //TODO ref+.env variable
+        port: process.argv.find(el => el.includes("-p="))?.slice(3) ?? 3000,
         host: "0.0.0.0",
         hot: true,
         progress: false,
@@ -28,7 +27,7 @@ const devWebpackConfig: webpack.Configuration = merger(conf, {
         noInfo: true,
         onListening: (server: any) => {
             const port = server.listeningApp.address().port;
-            //TODO
+            //TODO chalk
             console.log(`Local http://localhost:${port}`);
             console.log(`On Your Network http://${address.ip()}:${port}`)
         },

@@ -3,4 +3,6 @@
 * is a directory for wb
 * %public URL%
 * eslint opt
- * css name contenthash
+* css name contenthash
+* postcss
+ 

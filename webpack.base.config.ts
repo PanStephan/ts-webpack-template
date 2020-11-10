@@ -1,7 +1,6 @@
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "path";
-import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 const config: webpack.Configuration = {
     context: path.resolve(__dirname, "src"),
@@ -51,7 +50,6 @@ const config: webpack.Configuration = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: "/assets/index.html",
         }),

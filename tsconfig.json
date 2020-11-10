@@ -67,6 +67,6 @@
     /* Disallow inconsistently-cased references to the same file. */
     "jsx": "react"
   },
-  "include": ["src"],
+  "include": ["src", "typings.d.ts"],
   "exclude": ["node_modules"]
 }
